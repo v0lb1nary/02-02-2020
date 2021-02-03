@@ -6,9 +6,14 @@
     <h1> Painel de controle </h1>
     <p> Bem-vindo ao painel de controle  </p>
    
-    
     {% for x in usuario %}
-    <p><strong> {{ x.email }}</strong> é meu email </p>
+    <p><strong> {{ x.username }}</strong> é meu nickname </p>
+
+    <p><strong> {{ x.first_name }} {{ x.last_name  }}</strong> é meu nome </p>
+
+    <p><strong> {{ x.email }}</strong> é meu email de user </p>
+
+    <p><strong> {{ x.doce_preferido }}</strong> é meu doce preferido </p>
     {% endfor %}
 
 {% endblock %}
