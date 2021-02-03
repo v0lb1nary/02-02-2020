@@ -1,0 +1,17 @@
+{% extends "base.html "%}
+
+{% block title %} Autenticação do usuário {% endblock %}
+
+{% block content %}
+    <h1> Autenticação </h1>
+    <p> Por favor, use o seguinte formulário para o login </p>
+
+    <form method="post">
+        {{ formulario.as_p }}
+        {% csrf_token %}
+
+        <p> <input type="submit" value="entrar"> </p>
+    </form>
+    <p> <a href="{% url 'password_reset' %}"> Esqueceu sua senha? </a> </p>
+
+{% endblock %}

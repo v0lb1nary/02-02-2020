@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%} {% endblock %}</title>
+    <link href="{% static 'css/base.css'%}" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <span class="logo"> Bookmarks</span>
+        {% if request.user.is_authenticated %}
+            <ul class="menu">
+                <li {% if section == "painel_controle" %} 
+                        class="selected" {% endif %}><a href="{% url 'painel_controle' %}">Painel de controle</a></li>
+                <li>Imagens</li>
+                <li>Pessoas</li>
+            </ul>
+        {% endif %}
+    
+        <span class="user">
+            {% if request.user.is_authenticated %}
+                Olá {{ request.user.first_name }} , <a href="{% url 'logout' %}">Sair</a>
+            {% else %}
+                <a href="{% url 'login' %}">Entrar </a>
+            {% endif %}
+        </span>
+    </div>
+
+    <div id="content">
+        {% block content %}
+        {% endblock%}
+    </div>
+    
+</body>
+</html>
