@@ -5,4 +5,10 @@
 {% block content %}
     <h1> Painel de controle </h1>
     <p> Bem-vindo ao painel de controle  </p>
+   
+    
+    {% for x in usuario %}
+    <p><strong> {{ x.email }}</strong> é meu email </p>
+    {% endfor %}
+
 {% endblock %}

@@ -1,4 +1,5 @@
 from django import forms
+from .models import Mixin
 from django.contrib.auth.models import User
 
 class FormularioLogin(forms.Form):
@@ -9,11 +10,10 @@ class FormularioLogin(forms.Form):
 class FormularioRegistroUsuario(forms.ModelForm):
     senha = forms.CharField(label='senha', widget=forms.PasswordInput)
     senha2 = forms.CharField(label='Repetir senha', widget=forms.PasswordInput)
-    doce_preferido = forms.CharField(label="doce preferido")
 
     class Meta:
-        model = User
-        fields = ('username', 'first_name', 'email')
+        model = Mixin
+        fields = ('username', 'first_name', 'email', 'doce_preferido')
     
     def  limpar_senha2(self):
         cd = self.cleaned_data

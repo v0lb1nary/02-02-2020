@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .forms import FormularioLogin, FormularioRegistroUsuario
 from django.contrib.auth.decorators import login_required
+from .models import Mixin
 
 '''
 def login_usuario(request):
@@ -29,7 +30,8 @@ def login_usuario(request):
 
 @login_required
 def painel_controle(request):
-    return render(request, 'conta/painel_controle.html', {'section':'painel de controle'})
+    usuario = Mixin.objects.all()
+    return render(request, 'conta/painel_controle.html', {'section':'painel de controle', 'usuario':usuario})
 
 def registrar(request):
     if request.method == 'POST':
